@@ -5,6 +5,7 @@ const moodOptions = [
   { label: 'Happy', emoji: '😊' },
   { label: 'Calm', emoji: '😌' },
   { label: 'Neutral', emoji: '🙂' },
+  { label: 'Sad', emoji: '🙁' },
   { label: 'Angry', emoji: '😠' },
 ];
 
@@ -27,9 +28,10 @@ const MoodCard = ({ selectedMood, setSelectedMood, note, setNote }) => (
           </button>
         ))}
       </div>
+        <h2 className="text-lg font-medium">🗒️ Your notes for today</h2>
       <textarea
         placeholder="Write your note..."
-        className="w-full p-2 border rounded-md text-sm"
+        className="w-full p-2 border rounded-md text-sm h-40 p-4 border rounded-md resize-none bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={note}
         onChange={(e) => setNote(e.target.value)}
       />
