@@ -1,0 +1,189 @@
+/* App.css */
+
+/* General Reset & Base */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f6f8fa;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #2f855a;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #e6f4ea;
+  padding: 12px 24px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.navbar a {
+  color: #2f855a;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: #276749;
+}
+
+/* Home Page */
+.home-container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.home-header h1 {
+  font-size: 2.5rem;
+  color: #2f855a;
+  margin-bottom: 0.5rem;
+}
+
+.home-header p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Mood Tracker */
+.mood-tracker-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.mood-tracker-section h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.mood-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mood-button {
+  background-color: #e0f2f1;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 100px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mood-button:hover {
+  background-color: #b2dfdb;
+  transform: translateY(-3px);
+}
+
+.emoji {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.mood-feedback {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-top: 1rem;
+}
+
+/* Home Links Section */
+.home-links {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 1.5rem;
+}
+
+.home-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.home-links li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  background-color: #edf7ed;
+  border-radius: 8px;
+  color: #2f855a;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.home-links li a:hover {
+  background-color: #c6f6d5;
+}
+
+/* Auth Forms */
+.auth-form {
+  max-width: 400px;
+  margin: 3rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.auth-form h1 {
+  margin-bottom: 1rem;
+  color: #2f855a;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #2f855a;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+.auth-form button:hover {
+  background-color: #276749;
+}
