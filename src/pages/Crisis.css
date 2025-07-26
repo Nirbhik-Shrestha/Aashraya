@@ -1,0 +1,66 @@
+.crisis-container {
+  padding: 2rem;
+  max-width: 700px;
+  margin: auto;
+  background: #fff3f3;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+  text-align: center;
+}
+
+.crisis-container h1 {
+  color: #c62828;
+  font-size: 2rem;
+}
+
+.crisis-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.crisis-button {
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: white;
+}
+
+.crisis-button.emergency {
+  background-color: #d32f2f;
+}
+
+.crisis-button.counselor {
+  background-color: #1976d2;
+}
+
+.crisis-button.breathe {
+  background-color: #388e3c;
+}
+
+.crisis-resources {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.crisis-resources h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.crisis-resources ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.crisis-resources li {
+  margin: 0.3rem 0;
+}
+
+.crisis-resources a {
+  color: #c62828;
+  text-decoration: underline;
+}

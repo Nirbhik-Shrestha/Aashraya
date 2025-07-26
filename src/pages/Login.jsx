@@ -5,8 +5,6 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 
-
-
 export default function Login({ setAuth }) {
   const navigate = useNavigate();
 
@@ -25,6 +23,14 @@ export default function Login({ setAuth }) {
     if (res.ok) {
       localStorage.setItem("token", data.token);
       setAuth(true);
+
+      await fetch("/api/streak/update", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${data.token}`,
+        },
+      });
+
       navigate("/");
     } else {
       alert(data.error);
@@ -32,11 +38,12 @@ export default function Login({ setAuth }) {
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleLogin} className="auth-form">
       <h1>Login</h1>
       <input name="username" placeholder="Username" required />
       <input name="password" type="password" placeholder="Password" required />
       <button type="submit">Login</button>
+      <p>Not Registered? <a href='./register'>Register Now</a> </p>
     </form>
   );
 }

@@ -1,21 +1,57 @@
 // Home.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./Home.css";
 
 function Home() {
   const [selectedMood, setSelectedMood] = useState(null);
+  const [moodLocked, setMoodLocked] = useState(false);
 
   const moodOptions = [
     { label: "Happy", emoji: "😊" },
     { label: "Sad", emoji: "😢" },
     { label: "Okay", emoji: "😐" },
     { label: "Anxious", emoji: "😰" },
-    { label: "Angry", emoji: "😠" }
+    { label: "Angry", emoji: "😠" },
   ];
 
-  const handleMoodSelect = (mood) => {
-    setSelectedMood(mood);
-    alert(`You selected: ${mood}`);
+  useEffect(() => {
+    const fetchTodayMood = async () => {
+      try {
+        const res = await axios.get("/api/mood/today", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        if (res.data.mood) {
+          setSelectedMood(res.data.mood);
+          setMoodLocked(true);
+        }
+      } catch (err) {
+        console.error("Failed to check today's mood", err);
+      }
+    };
+
+    fetchTodayMood();
+  }, []);
+
+  const handleMoodSelect = async (mood) => {
+    try {
+      await axios.post(
+        "/api/mood",
+        { mood },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      setSelectedMood(mood);
+      setMoodLocked(true);
+    } catch (err) {
+      alert(err.response?.data?.message || "Something went wrong");
+    }
   };
 
   return (
@@ -33,6 +69,7 @@ function Home() {
               key={mood.label}
               onClick={() => handleMoodSelect(mood.label)}
               className="mood-button"
+              disabled={moodLocked}
             >
               <span className="emoji">{mood.emoji}</span>
               <span className="label">{mood.label}</span>

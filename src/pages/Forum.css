@@ -1,0 +1,142 @@
+.forum-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.forum-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.post-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.post-form button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #4a90e2;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.post-form button:disabled {
+  background: #8cbef4;
+  cursor: not-allowed;
+}
+
+.posts-list {
+  margin-top: 2rem;
+}
+
+.post {
+  background: #f7f9fc;
+  border-left: 4px solid #4a90e2;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  animation: fadeIn 0.3s ease;
+}
+
+.post-author {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.post-content {
+  margin-bottom: 0.5rem;
+}
+
+.post-date {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.post-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.like-button,
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px 6px;
+  transition: transform 0.1s;
+}
+
+.like-button.liked {
+  color: red;
+}
+
+.like-button:hover,
+.delete-button:hover {
+  transform: scale(1.1);
+}
+
+.post-comments {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.comment {
+  margin-bottom: 0.3rem;
+}
+
+.comment-date {
+  font-size: 0.75rem;
+  color: #888;
+  margin-left: 8px;
+}
+
+.comment-form {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.comment-form button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,21 +1,16 @@
-// Breathe.jsx
 import { useEffect, useState } from "react";
 
 export default function Breathe() {
   const [phase, setPhase] = useState("Inhale");
-  const [count, setCount] = useState(4);
 
   useEffect(() => {
     const timer = setInterval(() => {
       if (phase === "Inhale") {
         setPhase("Hold");
-        setCount(4);
       } else if (phase === "Hold") {
         setPhase("Exhale");
-        setCount(4);
       } else {
         setPhase("Inhale");
-        setCount(4);
       }
     }, 4000);
 
@@ -23,39 +18,92 @@ export default function Breathe() {
   }, [phase]);
 
   return (
-    <div style={{ textAlign: "center", padding: "2rem" }}>
-      <h1>Breathe with Aashraya</h1>
-      <p>Relax and follow the guided breathing below.</p>
+    <div className="breathe-container">
+      <h1 className="breathe-title">Breathe with Aashraya</h1>
+      <p className="breathe-description">Relax and follow the guided breathing below.</p>
 
-      <div style={{ 
-        margin: "2rem auto", 
-        width: "200px", 
-        height: "200px", 
-        borderRadius: "50%", 
-        backgroundColor: "#cce5ff", 
-        display: "flex", 
-        alignItems: "center", 
-        justifyContent: "center", 
-        fontSize: "1.5rem", 
-        animation: `${phase === "Inhale" ? "expand" : phase === "Exhale" ? "shrink" : ""} 4s ease-in-out forwards` 
-      }}>
+      <div
+        className={`breathe-circle ${phase.toLowerCase()}`}
+      >
         {phase}
       </div>
 
-      <p>{phase === "Hold" ? "Hold your breath..." : `Now ${phase.toLowerCase()}...`}</p>
+      <p className="breathe-instruction">
+        {phase === "Hold" ? "Hold your breath..." : `Now ${phase.toLowerCase()}...`}
+      </p>
 
-      <style>
-        {`
-          @keyframes expand {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.3); }
-          }
-          @keyframes shrink {
-            0% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-          }
-        `}
-      </style>
+      <style>{`
+        .breathe-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 80vh;
+          background: linear-gradient(to bottom right, #dbeafe, #f0f9ff);
+          font-family: 'Segoe UI', sans-serif;
+        }
+
+        .breathe-title {
+          font-size: 2.5rem;
+          color: #1e3a8a;
+          margin-bottom: 0.5rem;
+        }
+
+        .breathe-description {
+          font-size: 1.1rem;
+          color: #3b82f6;
+          margin-bottom: 2rem;
+        }
+
+        .breathe-circle {
+          width: 220px;
+          height: 220px;
+          border-radius: 50%;
+          background: radial-gradient(circle at center, #93c5fd, #3b82f6);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.8rem;
+          color: white;
+          box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+          animation-duration: 4s;
+          animation-timing-function: ease-in-out;
+          animation-fill-mode: forwards;
+        }
+
+        .inhale {
+          animation-name: expand;
+        }
+        
+        .hold {
+          animation-name: hold;
+        }
+
+        .exhale {
+          animation-name: shrink;
+        }
+
+        .breathe-instruction {
+          margin-top: 1.5rem;
+          font-size: 1.2rem;
+          color: #1e40af;
+        }
+
+        @keyframes expand {
+          0% { transform: scale(1); }
+          100% { transform: scale(1.3); }
+        }
+        
+        @keyframes hold {
+          0% { transform: scale(1.3); }
+          100% { transform: scale(1.3); }
+        }
+
+        @keyframes shrink {
+          0% { transform: scale(1.3); }
+          100% { transform: scale(1); }
+        }
+      `}</style>
     </div>
   );
 }
