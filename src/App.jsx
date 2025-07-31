@@ -15,6 +15,9 @@ import UserNavbar from "./components/UserNavbar";
 import AdminNavbar from "./components/AdminNavbar";
 import "./App.css";
 import UserManagement from "./pages/admin/UserManagement";
+import ProfileDetail from "./pages/ProfileDetail";
+import MentalHealthDirectory from "./pages/MentalHealthDirectory";
+
 
 function ProtectedRoute({ isAuthenticated, allowedRoles = [], children }) {
   const token = localStorage.getItem("token");
@@ -139,6 +142,22 @@ function App() {
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated} allowedRoles={["user"]}>
               <Blogs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/directory"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated} allowedRoles={["user"]}>
+              <MentalHealthDirectory />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cardprofile/:id"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated} allowedRoles={["user"]}>
+              <ProfileDetail  />
             </ProtectedRoute>
           }
         />

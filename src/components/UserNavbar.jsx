@@ -12,6 +12,8 @@ export default function UserNavbar({ isAuthenticated, onLogout, streak }) {
         <Link to="/blogs">Blogs</Link>
         <Link to="/faq">FAQ</Link>
         <Link to="/crisis">Crisis</Link>
+        <Link to="/directory">Find a Center</Link>
+
         {!isAuthenticated && <Link to="/login">Login</Link>}
         {!isAuthenticated && <Link to="/register">Register</Link>}
       </div>
