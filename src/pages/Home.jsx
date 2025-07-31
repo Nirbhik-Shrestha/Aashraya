@@ -1,20 +1,21 @@
 // Home.jsx
 import { useState, useEffect } from "react";
-import axios from "axios";
 import "./Home.css";
+import axios from "axios";
 
 function Home() {
   const [selectedMood, setSelectedMood] = useState(null);
-  const [moodLocked, setMoodLocked] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const moodOptions = [
     { label: "Happy", emoji: "😊" },
     { label: "Sad", emoji: "😢" },
     { label: "Okay", emoji: "😐" },
     { label: "Anxious", emoji: "😰" },
-    { label: "Angry", emoji: "😠" },
+    { label: "Angry", emoji: "😠" }
   ];
 
+  // Fetch today's mood on component mount
   useEffect(() => {
     const fetchTodayMood = async () => {
       try {
@@ -23,13 +24,13 @@ function Home() {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-
-        if (res.data.mood) {
+        if (res.data && res.data.mood) {
           setSelectedMood(res.data.mood);
-          setMoodLocked(true);
         }
       } catch (err) {
-        console.error("Failed to check today's mood", err);
+        console.error("No mood logged today or error fetching it.");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -38,21 +39,21 @@ function Home() {
 
   const handleMoodSelect = async (mood) => {
     try {
-      await axios.post(
-        "/api/mood",
-        { mood },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const res = await axios.post("/api/mood", { mood }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
       setSelectedMood(mood);
-      setMoodLocked(true);
     } catch (err) {
-      alert(err.response?.data?.message || "Something went wrong");
+      console.error("Error logging mood:", err);
+      alert("You already logged your mood today.");
     }
   };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="home-container">
@@ -63,23 +64,24 @@ function Home() {
 
       <section className="mood-tracker-section">
         <h2>How are you feeling today?</h2>
-        <div className="mood-options">
-          {moodOptions.map((mood) => (
-            <button
-              key={mood.label}
-              onClick={() => handleMoodSelect(mood.label)}
-              className="mood-button"
-              disabled={moodLocked}
-            >
-              <span className="emoji">{mood.emoji}</span>
-              <span className="label">{mood.label}</span>
-            </button>
-          ))}
-        </div>
-        {selectedMood && (
+
+        {selectedMood ? (
           <p className="mood-feedback">
             Thanks for sharing. You feel <strong>{selectedMood}</strong> today.
           </p>
+        ) : (
+          <div className="mood-options">
+            {moodOptions.map((mood) => (
+              <button
+                key={mood.label}
+                onClick={() => handleMoodSelect(mood.label)}
+                className="mood-button"
+              >
+                <span className="emoji">{mood.emoji}</span>
+                <span className="label">{mood.label}</span>
+              </button>
+            ))}
+          </div>
         )}
       </section>
 
