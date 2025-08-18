@@ -52,7 +52,13 @@ function Forum() {
       });
 
       const data = await res.json();
+
       if (res.ok) {
+        // Show warning if present
+        if (data.warning) {
+          alert(data.warning); // Or trigger modal/toast/etc.
+        }
+
         setPosts([data.post, ...posts]);
         setNewPost("");
       } else {
@@ -60,9 +66,11 @@ function Forum() {
       }
     } catch (err) {
       console.error("Submit error:", err);
+      alert("Something went wrong while posting.");
     }
     setLoading(false);
   };
+
 
   const handleLike = async (postId) => {
   try {
