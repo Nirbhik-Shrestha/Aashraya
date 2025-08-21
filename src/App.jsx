@@ -72,6 +72,7 @@ function App() {
     setIsAuthenticated(false);
     setStreak(null);
     setUser(null);
+    // Navigate('/');
   };
 
   if (loading) return null;
@@ -90,13 +91,13 @@ function App() {
 
         {/* User-only Routes */}
         <Route
-          path="/"
-          element={
+  path="/"
+  element={
             <ProtectedRoute isAuthenticated={isAuthenticated} allowedRoles={["user"]}>
-              <Home />
+        <Home />
             </ProtectedRoute>
-          }
-        />
+  }
+/>
         <Route
           path="/faq"
           element={

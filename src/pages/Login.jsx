@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Login({ setAuth }) {
   const navigate = useNavigate();
@@ -30,21 +30,11 @@ export default function Login({ setAuth }) {
         const user = await userRes.json();
         localStorage.setItem("user", JSON.stringify(user));
 
-        // Update streak for users only
-        if (user.role === "user") {
-          await fetch("/api/streak/update", {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${data.token}`,
-            },
-          });
-        }
-
         // Redirect based on role
         if (user.role === "admin") {
           navigate("/admin/dashboard");
         } else {
-          navigate("/"); // or /home or wherever your user dashboard is
+          navigate("/");
         }
       } else {
         alert(data.error || "Login failed.");
@@ -56,12 +46,34 @@ export default function Login({ setAuth }) {
   };
 
   return (
-    <form onSubmit={handleLogin} className="auth-form">
-      <h1>Login</h1>
-      <input name="username" placeholder="Username" required />
-      <input name="password" type="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-      <p>Not Registered? <a href="./register">Register Now</a></p>
-    </form>
+    <div className="login-container">
+      <div className="login-card">
+        <h1 className="site-name">🌿 Aashraya</h1>
+        <p className="tagline">Your space for calm and connection</p>
+
+        <form onSubmit={handleLogin} className="auth-form">
+          <input
+            name="username"
+            placeholder="Username"
+            required
+            className="input-field"
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+            className="input-field"
+          />
+          <button type="submit" className="login-button">
+            Login
+          </button>
+        </form>
+
+        <p className="register-link">
+          Not Registered? <a href="/register">Register Now</a>
+        </p>
+      </div>
+    </div>
   );
 }

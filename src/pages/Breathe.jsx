@@ -38,7 +38,7 @@ export default function Breathe() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          min-height: 80vh;
+          min-height: 90vh;
           background: linear-gradient(to bottom right, #dbeafe, #f0f9ff);
           font-family: 'Segoe UI', sans-serif;
         }
@@ -52,7 +52,7 @@ export default function Breathe() {
         .breathe-description {
           font-size: 1.1rem;
           color: #3b82f6;
-          margin-bottom: 2rem;
+          margin-bottom: 5rem;
         }
 
         .breathe-circle {
@@ -69,6 +69,7 @@ export default function Breathe() {
           animation-duration: 4s;
           animation-timing-function: ease-in-out;
           animation-fill-mode: forwards;
+          margin-bottom: 3rem;
         }
 
         .inhale {

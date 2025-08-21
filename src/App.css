@@ -1,11 +1,11 @@
 .auth-form {
   max-width: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border: 1px solid #ccc;
+  margin: 1rem auto;
+  /* padding: 2rem; */
+  /* border: 1px solid #ccc; */
   border-radius: 12px;
   background: #ffffff;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); */
 }
 
 .auth-form h1 {
@@ -47,65 +47,4 @@
 
 .auth-form button:hover {
   background: #43a047;
-}
-
-/* Navbar Styles */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fefefe;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #2c3e50;
-  font-weight: 500;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.nav-links a:hover {
-  color: #3498db;
-  transform: translateY(-2px);
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.streak-display {
-  background-color: #ffeaa7;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-weight: bold;
-  color: #d35400;
-  font-size: 0.95rem;
-}
-
-.logout-button {
-  padding: 0.4rem 0.8rem;
-  border: none;
-  background-color: #e74c3c;
-  color: white;
-  font-weight: 500;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.logout-button:hover {
-  background-color: #c0392b;
 }

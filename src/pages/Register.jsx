@@ -1,6 +1,5 @@
-import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router";
+import "./Login.jsx";
 
 export default function Register({ setAuth }) {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ export default function Register({ setAuth }) {
       email: form.email.value,
       contact: form.contact.value,
       address: form.address.value,
-      dob: form.dob.value
+      dob: form.dob.value,
     };
 
     if (!validateEmail(userData.email)) {
@@ -33,7 +32,7 @@ export default function Register({ setAuth }) {
     const res = await fetch("http://localhost:5000/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData)
+      body: JSON.stringify(userData),
     });
 
     const data = await res.json();
@@ -46,17 +45,28 @@ export default function Register({ setAuth }) {
   };
 
   return (
-    <form onSubmit={handleRegister} className="auth-form">
-      <h1>Register</h1>
-      <input name="username" placeholder="Username" required />
-      <input name="password" type="password" placeholder="Password" required />
-      <input name="email" type="email" placeholder="Email" required />
-      <input name="contact" placeholder="Contact Number" required />
-      <input name="address" placeholder="Address" required />
-      <input name="dob" type="date" required />
-      <button type="submit">Register</button>
-      <p>Have an account already? <a href='./login'>Login</a> </p>
+    <div className="register-container">
+      <div className="register-card">
+        <h1 className="site-name">🌿 Aashraya</h1>
+        <p className="tagline">Create your account and begin your journey</p>
 
-    </form>
+        <form onSubmit={handleRegister} className="auth-form">
+          <input name="username" placeholder="Username" required className="input-field" />
+          <input name="password" type="password" placeholder="Password" required className="input-field" />
+          <input name="email" type="email" placeholder="Email" required className="input-field" />
+          <input name="contact" placeholder="Contact Number" required className="input-field" />
+          <input name="address" placeholder="Address" required className="input-field" />
+          <input name="dob" type="date" required className="input-field" />
+
+          <button type="submit" className="register-button">
+            Register
+          </button>
+        </form>
+
+        <p className="login-link">
+          Already have an account? <a href="/login">Login</a>
+        </p>
+      </div>
+    </div>
   );
 }
